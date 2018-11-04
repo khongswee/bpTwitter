@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: '../config-android.gradle'
+
+
+android {
+    defaultConfig {
+        versionCode 1
+        versionName "1.0."
+        testInstrumentationRunner "com.bp.twitter.TestRunner"
+        applicationId "com.bp.twitter"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    libraries()
+    kotlin()
+    networking()
+    rx()
+    architecture()
+    view()
+    di()
+    testing()
+}
